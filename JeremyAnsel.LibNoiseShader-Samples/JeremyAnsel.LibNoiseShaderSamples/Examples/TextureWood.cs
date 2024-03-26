@@ -108,7 +108,7 @@ namespace JeremyAnsel.LibNoiseShaderSamples.Examples
             // Map the output values from the noise module onto a plane.  This will
             // create a two-dimensional noise map which can be rendered as a flat
             // texture map.
-            PlaneBuilder plane = new(noiseModule, seamless, -1.0f, 1.0f, -1.0f, 1.0f);
+            PlaneBuilder plane = new(noiseModule, noise.Seed, seamless, -1.0f, 1.0f, -1.0f, 1.0f);
             RenderTexture(noise, plane, filename, height, height);
         }
 
@@ -117,7 +117,7 @@ namespace JeremyAnsel.LibNoiseShaderSamples.Examples
             // Map the output values from the noise module onto a sphere.  This will
             // create a two-dimensional noise map which can be rendered as a spherical
             // texture map.
-            SphereBuilder sphere = new(noiseModule, -90.0f, 90.0f, -180.0f, 180.0f);
+            SphereBuilder sphere = new(noiseModule, noise.Seed, -90.0f, 90.0f, -180.0f, 180.0f);
             RenderTexture(noise, sphere, filename, height * 2, height);
         }
 
@@ -134,7 +134,7 @@ namespace JeremyAnsel.LibNoiseShaderSamples.Examples
             file.Write(Path.ChangeExtension(filename, "libnoise"));
 
             // Render the texture.
-            ColorMap data = MapGenerator.GenerateColorMapOnCpu(noise, renderer, width, height);
+            ColorMap data = MapGenerator.GenerateColorMapOnCpu(renderer, width, height);
 
             // Write the texture.
             data.SaveBitmap(filename);

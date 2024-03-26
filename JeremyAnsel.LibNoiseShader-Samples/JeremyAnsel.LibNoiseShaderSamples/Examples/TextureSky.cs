@@ -111,8 +111,8 @@ namespace JeremyAnsel.LibNoiseShaderSamples.Examples
             // Map the output values from both noise module onto two planes.  This will
             // create two two-dimensional noise maps which can be rendered as two flat
             // texture maps.
-            PlaneBuilder lowerPlane = new(lowerNoiseModule, seamless, -1.0f, 1.0f, -1.0f, 1.0f);
-            PlaneBuilder upperPlane = new(upperNoiseModule, seamless, -1.0f, 1.0f, -1.0f, 1.0f);
+            PlaneBuilder lowerPlane = new(lowerNoiseModule, noise.Seed, seamless, -1.0f, 1.0f, -1.0f, 1.0f);
+            PlaneBuilder upperPlane = new(upperNoiseModule, noise.Seed, seamless, -1.0f, 1.0f, -1.0f, 1.0f);
 
             // Given these two noise maps, render the lower texture map, then render the
             // upper texture map on top of the lower texture map.
@@ -124,8 +124,8 @@ namespace JeremyAnsel.LibNoiseShaderSamples.Examples
             // Map the output values from both noise module onto two spheres.  This will
             // create two two-dimensional noise maps which can be rendered as two
             // spherical texture maps.
-            SphereBuilder lowerSphere = new(lowerNoiseModule, -90.0f, 90.0f, -180.0f, 180.0f);
-            SphereBuilder upperSphere = new(upperNoiseModule, -90.0f, 90.0f, -180.0f, 180.0f);
+            SphereBuilder lowerSphere = new(lowerNoiseModule, noise.Seed, -90.0f, 90.0f, -180.0f, 180.0f);
+            SphereBuilder upperSphere = new(upperNoiseModule, noise.Seed, -90.0f, 90.0f, -180.0f, 180.0f);
 
             // Given these two noise maps, render the lower texture map, then render the
             // upper texture map on top of the lower texture map.
@@ -164,7 +164,7 @@ namespace JeremyAnsel.LibNoiseShaderSamples.Examples
             file.Write(Path.ChangeExtension(filename, "libnoise"));
 
             // Render the texture.
-            ColorMap data = MapGenerator.GenerateColorMapOnCpu(noise, finalRenderer, width, height);
+            ColorMap data = MapGenerator.GenerateColorMapOnCpu(finalRenderer, width, height);
 
             // Write the texture.
             data.SaveBitmap(filename);

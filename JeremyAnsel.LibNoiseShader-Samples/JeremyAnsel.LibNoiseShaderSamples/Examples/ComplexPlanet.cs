@@ -1773,7 +1773,7 @@ namespace JeremyAnsel.LibNoiseShaderSamples.Examples
 
             // First, create a spherical-noise-map builder.
             // Pass in the boundaries of the elevation grid to extract.
-            SphereBuilder planet = new(finalPlanet, SOUTH_COORD, NORTH_COORD, WEST_COORD, EAST_COORD);
+            SphereBuilder planet = new(finalPlanet, noise.Seed, SOUTH_COORD, NORTH_COORD, WEST_COORD, EAST_COORD);
 
             // Build the elevation grid with the output values from the final-planet
             // group.
@@ -1825,7 +1825,7 @@ namespace JeremyAnsel.LibNoiseShaderSamples.Examples
 
             // Write the image as a Windows bitmap file (*.bmp).
             MapGenerator
-                .GenerateColorMapOnCpu(noise, imageRenderer, GRID_WIDTH, GRID_HEIGHT)
+                .GenerateColorMapOnCpu(imageRenderer, GRID_WIDTH, GRID_HEIGHT)
                 .SaveBitmap(string.Concat(outputDir, "terrain.png"));
 
             // Flatten the seas that are deeper than 15 meters or so.  We do not flatten
@@ -1866,7 +1866,7 @@ namespace JeremyAnsel.LibNoiseShaderSamples.Examples
 
             // Write the image as a Windows bitmap file (*.bmp).
             MapGenerator
-                .GenerateColorMapOnCpu(noise, surfaceRenderer, GRID_WIDTH, GRID_HEIGHT)
+                .GenerateColorMapOnCpu(surfaceRenderer, GRID_WIDTH, GRID_HEIGHT)
                 .SaveBitmap(string.Concat(outputDir, "terrainsurface.png"));
 
             // Save to libnoise file
@@ -1890,7 +1890,7 @@ namespace JeremyAnsel.LibNoiseShaderSamples.Examples
 
             // Write the specularity map as a Windows bitmap file (*.bmp).
             MapGenerator
-                .GenerateColorMapOnCpu(noise, specularityRenderer, GRID_WIDTH, GRID_HEIGHT)
+                .GenerateColorMapOnCpu(specularityRenderer, GRID_WIDTH, GRID_HEIGHT)
                 .SaveBitmap(string.Concat(outputDir, "terrainspec.png"));
 
             // Finally, render the normal map.  Using OpenGL or another 3D API, a
@@ -1901,7 +1901,7 @@ namespace JeremyAnsel.LibNoiseShaderSamples.Examples
 
             // Write the normal map as a Windows bitmap file (*.bmp).
             MapGenerator
-                .GenerateColorMapOnCpu(noise, normalMapRenderer, GRID_WIDTH, GRID_HEIGHT)
+                .GenerateColorMapOnCpu(normalMapRenderer, GRID_WIDTH, GRID_HEIGHT)
                 .SaveBitmap(string.Concat(outputDir, "terrainnormal.png"));
         }
     }
