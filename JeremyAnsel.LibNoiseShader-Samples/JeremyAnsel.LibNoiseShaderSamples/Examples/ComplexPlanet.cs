@@ -88,15 +88,9 @@ using JeremyAnsel.LibNoiseShader.IO.Models;
 using JeremyAnsel.LibNoiseShader.Maps;
 using JeremyAnsel.LibNoiseShader.Modules;
 using JeremyAnsel.LibNoiseShader.Renderers;
-using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JeremyAnsel.LibNoiseShaderSamples.Examples
 {
